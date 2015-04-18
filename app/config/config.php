@@ -30,14 +30,14 @@ return new \Phalcon\Config(array(
             'adapter'   => 'Mysql',
             'host'      => '192.168.8.7',
             'username'  => 'test',
-            'password'  => '******',
+            'password'  => '123456',
             'dbname'    => 'test',
         ),
         'dbWrite' => array(
             'adapter'   => 'Mysql',
-            'host'      => '192.168.8.8',
+            'host'      => '192.168.8.234',
             'username'  => 'root',
-            'password'  => '******',
+            'password'  => '7232275',
             'dbname'    => 'test',
         ),
     ),
@@ -46,17 +46,17 @@ return new \Phalcon\Config(array(
     'memcache' =>array(//分布式缓存
         'servers'=>array(
             array(
-                'host'=>'*.*.*.*',
+                'host'=>'192.168.1.52',
                 'port'=>11211,
                 'weight'=>1
             ),
             array(
-                'host'=>'*.*.*.*',
+                'host'=>'192.168.1.51',
                 'port'=>11211,
                 'weight'=>2
             ),
         ),
-        'prefix'=>'gc_',//
+        'prefix'=>'gcc_',//
         'lifetime'=> 259200,//memcache 3 days           
     ),
 
