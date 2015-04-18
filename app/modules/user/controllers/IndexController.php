@@ -18,7 +18,7 @@ class IndexController extends \Phalcon\Mvc\Controller {
         // print_r($mem);
 
         // $content = "username:".$mem->username;
-        $content = '';
+        $content = 'asd';
 
         return $this->di->get('response')->setContent($content);
         // return $this->di->get('response')->setJsonContent($content);

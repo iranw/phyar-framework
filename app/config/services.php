@@ -31,9 +31,9 @@ $di->set('router',function() use($config) {
     return $router;
 });
 
-$di->set("response", new \Phalcon\Http\Response);
+// $di->set("response", new \Phalcon\Http\Response);
 
-$di->set("request", new \Phalcon\Http\Request);
+// $di->set("request", new \Phalcon\Http\Request);
 
 //数据库配置
 $di->set('dbRead', function () use ($config) {
@@ -44,15 +44,6 @@ $di->set('dbRead', function () use ($config) {
         'dbname'    => $config->mysql->dbRead->dbname
     ));
 });
-$di->set('dbWrite',function() use ($config) {
-    return new Phalcon\Db\Adapter\Pdo\Mysql(array(
-        'host'      => $config->mysql->dbWrite->host,
-        'username'  => $config->mysql->dbWrite->username,
-        'password'  => $config->mysql->dbWrite->password,
-        'dbname'    => $config->mysql->dbWrite->dbname
-    ));
-});
-
 $di->set('dbWrite',function() use ($config) {
     return new Phalcon\Db\Adapter\Pdo\Mysql(array(
         'host'      => $config->mysql->dbWrite->host,

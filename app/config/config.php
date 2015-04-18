@@ -21,11 +21,7 @@ return new \Phalcon\Config(array(
         'user' => array(
             'className' => '\App\Modules\User\Module',
             'path'      => __DIR__ . '/../../app/modules/user/Module.php',
-        ),
-        'product' => array(
-            'className' => '\App\Modules\Product\Module',//new 
-            'path'      => __DIR__ . '/../../app/modules/product/Module.php',//include
-        ),
+        )
     ),
 
     //数据库配置 读写分离
