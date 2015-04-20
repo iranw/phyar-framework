@@ -9,6 +9,7 @@ class IndexController extends \Phalcon\Mvc\Controller {
      */
     public function indexAction($uid=false){
         $uid = $uid==false?$this->params['uid']:$uid;
+        // $uid = $this->params['uid'];
 
         // $string = \App\Library\Helper\StringHelp::itest();
         // echo $string;
@@ -20,8 +21,9 @@ class IndexController extends \Phalcon\Mvc\Controller {
         // $content = "username:".$mem->username;
         $content = 'asd';
 
-        return $this->di->get('response')->setContent($content);
-        // return $this->di->get('response')->setJsonContent($content);
+        return $content;
+        // return $this->di->get('response')->setContent($content);
+        return $this->di->get('response')->setJsonContent($content);
     }
 
     public function testAction(){
