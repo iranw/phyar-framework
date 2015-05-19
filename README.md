@@ -18,7 +18,6 @@ RPC接口端框架，使用phalcon全栈框架+yar并发框架组装实现统一
         phyar-framework                                 //根目录(这个无所谓随便起)
             |---README.md                               //帮助文档
             |---.htaccess                               //
-            |---vendor                                  //第三方类库包目录
             |---public                                  //入口目录
                   |---index.php                         //入口文件
                   |---.htaccess                         //
