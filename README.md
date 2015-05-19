@@ -46,5 +46,81 @@ RPC接口端框架，使用phalcon全栈框架+yar并发框架组装实现统一
                                     |---IndexController.php
                              |---Module.php
 
-文档：暂时参考[https://github.com/iranw/yarf-framework](https://github.com/iranw/yarf-framework)文档，
 
+
+### 样例演示
+注:以下仅为概述，具体请求随后补充
+
+
+以[http://192.168.8.234:7070/user/index/get](http://192.168.8.234:7070/user/index/get)为请求对象
+
+###### 1、`Post/Get`请求 示例如下:
+
+```php
+<?php
+//get请求
+$url = "http://192.168.8.234:7070/user/index/get?uid=120";
+$response = file_get_contents($url);
+echo $response."<br>\n";
+
+//post请求
+$url = "http://192.168.8.234:7070/user/index/get";
+$postArr = array('uid'=>200);
+$response = curl_by_post($url,$postArr);
+echo $response."<br>\n";
+
+function curl_by_post($url,$post) {
+    $ch=curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_POST,1);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$post);
+    curl_setopt($ch,CURLOPT_HEADER,0);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch,CURLOPT_FOLLOWLOCATION,1);
+    $result=curl_exec($ch);
+    curl_close($ch);
+    return $result;
+}
+```
+
+###### 2、`Restful`请求 示例如下:
+
+```php
+<?php
+$url = "http://192.168.8.234:7070/user/index/get/uid/300";
+$response = file_get_contents($url);
+echo $response."<br>\n";
+
+$url = "http://192.168.8.234:7070/user/index/del/uid/300";
+$response = file_get_contents($url);
+echo $response."<br>\n";
+```
+
+###### 3、yar请求 示例如下
+
+```php
+<?php
+$params = array('uid'=>2548);
+$rpcUrl = 'http://192.168.8.234:7070/user/index/get';
+$client = new yar_client($rpcUrl);
+$result = $client->run($params);
+var_dump($result);
+```
+
+###### 4、yar并发请求 示例如下:
+
+```php
+<?php
+$params = array('uid'=>2548);
+
+Yar_Concurrent_Client::call("http://192.168.8.234:7070/user/index/get", "run", array($params), "callback");
+Yar_Concurrent_Client::call("http://192.168.8.234:7070/user/index/del", "run", array($params), "callback");
+Yar_Concurrent_Client::loop("callback", "error_callback"); //send the requests, 
+
+function callback($retval, $callinfo) {
+    echo $retval."\n<br>\n";
+}
+function error_callback($type, $error, $callinfo) {
+    error_log($error);
+}
+```
