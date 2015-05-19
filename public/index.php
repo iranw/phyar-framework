@@ -53,7 +53,6 @@ try {
         echo $end_time - $start_time;
     }
 } catch(\Phalcon\Exception $e) {
-     echo "PhalconException: ", $e->getMessage();
+    echo "PhalconException: ", $e->getMessage();
 }
-
 

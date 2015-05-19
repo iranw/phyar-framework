@@ -7,8 +7,12 @@ namespace App\Model;
 
 class Member extends \App\Model\BaseModel{
 
+    public $username;
+
     public function getSource(){
         return 'member';
     }
+
+
 
 }

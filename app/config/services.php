@@ -31,6 +31,10 @@ $di->set('router',function() use($config) {
     return $router;
 });
 
+\Phalcon\Mvc\Model::setup(array(
+    'notNullValidations' => false,
+));
+
 // $di->set("response", new \Phalcon\Http\Response);
 
 // $di->set("request", new \Phalcon\Http\Request);

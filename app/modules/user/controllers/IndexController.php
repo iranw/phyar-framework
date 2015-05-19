@@ -15,24 +15,26 @@ class IndexController extends \Phalcon\Mvc\Controller {
         // echo $string;
         // exit();
 
-        // $mem = \App\Model\Member::findFirst($uid);
+        $mem = \App\Model\Member::findFirst(1);
+        $mem->username='2name';
+        $mem->age="23";
+        $mem->save();
         // print_r($mem);
+        // echo $mem->username;
 
-        // $content = "username:".$mem->username;
-        $content = 'asd';
+        $content = "username:".$mem->username;
 
-        return $content;
         // return $this->di->get('response')->setContent($content);
-        return $this->di->get('response')->setJsonContent($content);
+        return $this->di->get('response')->setJsonContent($uid);
     }
 
     public function testAction(){
         // echo 'test';
-        $content = 'asdf';
+        $content = 'asdf3232as22d';
         return $this->di->get('response')->setContent($content);
     }
 
-    public function getUserByUidAction($uid=0,$arr = array('a'=>'A')){
+    public function getUserByUidAction($uid=false){
         // echo 'asdf';
         $uid = $this->request->get('uid',null,$uid);
 
